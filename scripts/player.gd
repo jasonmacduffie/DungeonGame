@@ -9,6 +9,7 @@ func _ready():
 
 func move(direction):
 	assert(direction in ["up", "down", "left", "right"])
+	print(direction)
 	if direction == "up":
 		y += 1
 	elif direction == "down":
