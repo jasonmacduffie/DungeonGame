@@ -7,12 +7,13 @@ var room
 var current_scene
 
 func load_game(name):
-	var scn = load("user://saves/" + name + ".save.xscn")
-	var i = scn.instance()
-	if i == null:
-		return false
-	player = i
-	return true
+	player = PLAYER_SCENE.instance()
+	var x = ConfigFile.new()
+	x.load("user://saves/" + name + ".save.cfg")
+	player.stat_str = x.get_value("Player", "strength")
+	player.stat_spd = x.get_value("Player", "speed")
+	player.stat_int = x.get_value("Player", "intelligence")
+	player.stat_acc = x.get_value("Player", "accuracy")
 
 func goto_scene(path):
 	pass
@@ -28,10 +29,9 @@ func _deferred_goto_scene(path):
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
-
+	
 	# Remove this in the future to make more rooms possible
-	if not load_game("default"):
-		player = PLAYER_SCENE.instance()
+	load_game("default")
 	room = current_scene
 	room.add_child(player)
 	player.x = 1
