@@ -49,12 +49,12 @@ func check_tile(mob, direction):
 	
 	for i in get_children():
 		if i extends preload("res://scripts/mob.gd") and i.x == x and i.y == y:
-				mob_result = true
+				mob_result = i
 				break
 	
 	if tile_result:
 		if mob_result:
-			return ["mob", false] # For attacking
+			return ["mob", mob_result] # For attacking
 		else:
 			return ["normal", false]
 	else:
@@ -68,6 +68,9 @@ func _process(delta):
 		if walk_type[0] == "normal":
 			player.move(direction)
 			redraw(player)
+		elif walk_type[0] == "mob":
+			# print(walk_type[1])
+			pass
 		else:
 			pass
 
@@ -82,3 +85,4 @@ func _ready():
 			redraw(i)
 	set_process_input(true)
 	set_process(true)
+
