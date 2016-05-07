@@ -2,6 +2,9 @@
 extends Node2D
 
 const FAR_AWAY = 10000
+const ROAM = 0
+const SEARCH = 1
+const FLEE = 2
 
 # basic stats
 export(int, 0, 10) var stat_str = 4
@@ -17,6 +20,7 @@ var hp_damage = 0
 var x = 0
 var y = 0
 var dead = false
+export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
 
 # negative is enemy

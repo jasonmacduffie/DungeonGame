@@ -69,9 +69,25 @@ func mobs_turn():
 func mob_take_turn(mob):
 	var mobloc = Vector2(mob.x, mob.y)
 	var playerloc = Vector2(player.x, player.y)
-	if mob.disposition < 0:
-		if (mobloc - playerloc).length() < 1.4:
-			mob.attack(player)
+	if mob.disposition < 0 and (mobloc - playerloc).length() < 1.4:
+		mob.attack(player)
+	elif mob.movement == mob.ROAM:
+		var i = randi() % 4
+		var direction
+		if i == 0:
+			direction = "up"
+		elif i == 1:
+			direction = "down"
+		elif i == 2:
+			direction = "left"
+		else:
+			direction = "right"
+		var walk_type = check_tile(mob, direction)
+		if walk_type[0] == "normal":
+			mob.move(direction)
+			redraw(mob)
+	else:
+		pass
 
 func _process(delta):
 	if direction_press:
