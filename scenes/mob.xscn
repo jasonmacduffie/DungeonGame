@@ -13,7 +13,7 @@
 			</array>
 			<string> "names" </string>
 			<string_array  len="27">
-				<string> "player" </string>
+				<string> "mob" </string>
 				<string> "script/script" </string>
 				<string> "Node2D" </string>
 				<string> "sprite" </string>

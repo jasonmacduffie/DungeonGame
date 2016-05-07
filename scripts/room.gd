@@ -46,7 +46,12 @@ func check_tile(mob, direction):
 	
 	var tile_result = mob.can_walk(tile_types[get_node("tiles").get_cell(x,y)])
 	var mob_result = false
-
+	
+	for i in get_children():
+		if i extends preload("res://scripts/mob.gd") and i.x == x and i.y == y:
+				mob_result = true
+				break
+	
 	if tile_result:
 		if mob_result:
 			return ["mob", false] # For attacking
@@ -68,5 +73,12 @@ func _process(delta):
 
 func _ready():
 	player = get_node("/root/game").player
+	# Calculate mob location based on initial position
+	for i in get_children():
+		if i extends preload("res://scripts/mob.gd"):
+			var position = i.get_pos()
+			i.x = int(round(position.x / TILE_SIZE))
+			i.y = int(round(position.y / TILE_SIZE))
+			redraw(i)
 	set_process_input(true)
 	set_process(true)
