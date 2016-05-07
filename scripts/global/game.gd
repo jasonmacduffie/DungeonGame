@@ -25,4 +25,7 @@ func _ready():
 	player = PLAYER_SCENE.instance()
 	room = current_scene
 	room.add_child(player)
+	player.x = 1
+	player.y = 1
+	room.redraw(player)
 
