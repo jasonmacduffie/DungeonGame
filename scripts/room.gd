@@ -60,6 +60,19 @@ func check_tile(mob, direction):
 	else:
 		return ["bad", false]
 
+func mobs_turn():
+	for i in get_children():
+		if i extends preload("res://scripts/mob.gd") and i != player:
+			if not i.dead:
+				mob_take_turn(i)
+
+func mob_take_turn(mob):
+	var mobloc = Vector2(mob.x, mob.y)
+	var playerloc = Vector2(player.x, player.y)
+	if mob.disposition < 0:
+		if (mobloc - playerloc).length() < 1.4:
+			mob.attack(player)
+
 func _process(delta):
 	if direction_press:
 		var direction = direction_press
@@ -68,9 +81,12 @@ func _process(delta):
 		if walk_type[0] == "normal":
 			player.move(direction)
 			redraw(player)
+			mobs_turn()
 		elif walk_type[0] == "mob":
-			# print(walk_type[1])
-			pass
+			var mob = walk_type[1]
+			if mob.disposition < 0:
+				player.attack(mob)
+				mobs_turn()
 		else:
 			pass
 

@@ -6,6 +6,14 @@ var player
 var room
 var current_scene
 
+func load_game(name):
+	var scn = load("user://saves/" + name + ".save.xscn")
+	var i = scn.instance()
+	if i == null:
+		return false
+	player = i
+	return true
+
 func goto_scene(path):
 	pass
 	call_deferred("_deferred_goto_scene", path)
@@ -22,7 +30,8 @@ func _ready():
 	current_scene = root.get_child( root.get_child_count() -1 )
 
 	# Remove this in the future to make more rooms possible
-	player = PLAYER_SCENE.instance()
+	if not load_game("default"):
+		player = PLAYER_SCENE.instance()
 	room = current_scene
 	room.add_child(player)
 	player.x = 1
