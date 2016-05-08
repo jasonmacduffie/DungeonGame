@@ -32,6 +32,10 @@ func _input(event):
 		elif event.is_action("ui_down"):
 			direction_press = "down"
 
+func remove_child_player():
+	# Used to easily remove the player when changing rooms
+	remove_child(player)
+
 func redraw(item):
 	# This method displays the item in the correct coordinate
 	var x = item.x

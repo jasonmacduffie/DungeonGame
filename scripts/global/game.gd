@@ -15,8 +15,23 @@ func load_game(name):
 	player.stat_int = x.get_value("Player", "intelligence")
 	player.stat_acc = x.get_value("Player", "accuracy")
 
+func change_rooms(path, x, y):
+	call_deferred("_deferred_change_rooms", path, x, y)
+
+func _deferred_change_rooms(new_room, x, y):
+	room.remove_child_player()
+	current_scene.free()
+	var s = ResourceLoader.load(new_room)
+	current_scene = s.instance()
+	get_tree().get_root().add_child(current_scene)
+	get_tree().set_current_scene( current_scene )
+	room = current_scene.get_node("room")
+	player.x = x
+	player.y = y
+	room.add_child(player)
+	room.redraw(player)
+
 func goto_scene(path):
-	pass
 	call_deferred("_deferred_goto_scene", path)
 
 func _deferred_goto_scene(path):
