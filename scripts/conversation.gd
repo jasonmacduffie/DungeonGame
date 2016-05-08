@@ -24,6 +24,8 @@ func enter_option():
 		set_topic(current_topic['options'][i])
 
 func set_topic(d):
+	# Clear initial and choices
+	get_node("output").clear()
 	get_node("choices").clear()
 	current_topic = d
 	# Check for special results
@@ -32,6 +34,7 @@ func set_topic(d):
 			set_topic(conversation_tree)
 	else:
 		# Set initial to the text box
+		get_node("output").add_text(d['initial'])
 		for i in d['options']:
 			# For each option, add a button
 			get_node("choices").add_button(i['description'])
