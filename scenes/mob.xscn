@@ -21,7 +21,7 @@
 				<string> "stat_acc" </string>
 				<string> "movement" </string>
 				<string> "name" </string>
-				<string> "race" </string>
+				<string> "species" </string>
 				<string> "sprite_resource" </string>
 				<string> "disposition" </string>
 				<string> "external_conv" </string>

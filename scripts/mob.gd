@@ -24,7 +24,7 @@ export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
 
 export var name = ""
-export var race = "creature" # This is a string, to be flexible
+export var species = "creature" # This is a string, to be flexible
 
 # A custom skin may be specified
 export var sprite_resource = ""
@@ -88,9 +88,9 @@ func _ready():
 	# Load an external sprite if not null
 	if sprite_resource != "":
 		load_sprite(sprite_resource)
-	# You can also load a generic racial sprite
-	elif race in ["human", "roandan", "dokoran", "hermadon", "nathulan", "treddan"]:
-		load_sprite("res://images/" + race + ".png")
+	# You can also load a generic species sprite
+	elif species in ["human", "roandan", "dokoran", "hermadon", "nathulan", "treddan"]:
+		load_sprite("res://images/" + species + ".png")
 	# Load an external conversation if specified
 	if external_conv:
 		var f = File.new()
