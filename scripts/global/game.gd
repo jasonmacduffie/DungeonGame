@@ -6,6 +6,16 @@ var player
 var room
 var current_scene
 
+# Other global variables
+var armors = {}
+
+# Functions for selecting from global variables
+func select_armor(id):
+	for i in armors:
+		if i['id'] == id:
+			return i
+	return false
+
 func load_game(name):
 	player = PLAYER_SCENE.instance()
 	var x = ConfigFile.new()
@@ -45,8 +55,17 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
 	
+	# Initialize global data
+	var f = File.new()
+	f.open("res://data/armor.json", File.READ)
+	var d = {}
+	d.parse_json(f.get_as_text())
+	armors = d['armors']
+	f.close()
+	
 	# Remove this in the future to make more rooms possible
 	load_game("default")
+	player.armor_id = "old_plate"
 	room = current_scene.get_node("room")
 	room.add_child(player)
 	player.x = 1

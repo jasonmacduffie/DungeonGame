@@ -1,12 +1,16 @@
-[
-    {
-        "id": "none",
-        "name": "Unarmored",
-        "protection":0
-    },
-    {
-        "id": "old_plate",
-        "name": "Old Plate",
-        "protection" 5
-    }
-]
+{
+    "armors": [
+        {
+            "id": "none",
+            "name": "Unarmored",
+            "protection":0,
+            "texture": null
+        },
+        {
+            "id": "old_plate",
+            "name": "Old Plate",
+            "protection": 5,
+            "texture": "res://images/old_plate.png"
+        }
+    ]
+}

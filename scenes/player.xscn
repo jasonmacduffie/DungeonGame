@@ -12,7 +12,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="32">
+			<string_array  len="39">
 				<string> "player" </string>
 				<string> "script/script" </string>
 				<string> "stat_str" </string>
@@ -20,13 +20,20 @@
 				<string> "stat_int" </string>
 				<string> "stat_acc" </string>
 				<string> "movement" </string>
+				<string> "name" </string>
+				<string> "species" </string>
+				<string> "sprite_resource" </string>
+				<string> "armor_id" </string>
 				<string> "disposition" </string>
+				<string> "external_conv" </string>
+				<string> "conv_resource" </string>
 				<string> "Node2D" </string>
 				<string> "sprite" </string>
 				<string> "texture" </string>
 				<string> "region" </string>
 				<string> "region_rect" </string>
 				<string> "Sprite" </string>
+				<string> "armor_sprite" </string>
 				<string> "Camera2D" </string>
 				<string> "offset" </string>
 				<string> "anchor_mode" </string>
@@ -47,24 +54,27 @@
 				<string> "drag_margin/bottom" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 3 </int>
+			<int> 4 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="75"> 				-1, -1, 8, 0, -1, 7, 1, 0, 2, 1, 3, 1, 4, 1, 5, 1, 6, 2, 7, 3, 0, 0, 0, 13, 9, -1, 3, 10, 4, 11, 5, 12, 6, 0, 0, 0, 14, 14, -1, 17, 15, 7, 16, 8, 17, 9, 18, 5, 19, 10, 20, 11, 21, 11, 22, 12, 23, 12, 24, 9, 25, 9, 26, 5, 27, 13, 28, 14, 29, 14, 30, 14, 31, 14, 0 </int_array>
+			<int_array  len="98"> 				-1, -1, 14, 0, -1, 13, 1, 0, 2, 1, 3, 1, 4, 1, 5, 1, 6, 2, 7, 3, 8, 4, 9, 3, 10, 5, 11, 6, 12, 7, 13, 3, 0, 0, 0, 19, 15, -1, 3, 16, 8, 17, 9, 18, 10, 0, 0, 0, 19, 20, -1, 2, 17, 9, 18, 10, 0, 0, 0, 21, 21, -1, 17, 22, 11, 23, 12, 24, 7, 25, 9, 26, 13, 27, 14, 28, 14, 29, 15, 30, 15, 31, 7, 32, 7, 33, 9, 34, 16, 35, 17, 36, 17, 37, 17, 38, 17, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="15" shared="false">
+			<array  len="18" shared="false">
 				<resource  external="0">  </resource>
 				<int> 4 </int>
 				<int> 0 </int>
+				<string> "" </string>
+				<string> "creature" </string>
+				<string> "none" </string>
 				<int> 50 </int>
+				<bool> False </bool>
 				<resource  external="1">  </resource>
 				<bool> True </bool>
 				<rect2> 0, 0, 64, 64 </rect2>
 				<vector2> 32, 32 </vector2>
 				<int> 1 </int>
-				<bool> False </bool>
 				<vector2> 1, 1 </vector2>
 				<int> -10000000 </int>
 				<int> 10000000 </int>

@@ -22,6 +22,7 @@ var y = 0
 var dead = false
 export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
+var facing = "down"
 
 export var name = ""
 export var species = "creature" # This is a string, to be flexible
@@ -30,7 +31,8 @@ export var species = "creature" # This is a string, to be flexible
 export var sprite_resource = ""
 
 # Armor is just one piece to make things simpler
-var armor_id = "none"
+export var armor_id = "none"
+var armor
 
 # negative is enemy
 # 0 to 50 is neutral
@@ -68,6 +70,13 @@ func move(direction):
 	else:
 		x -= 1
 
+func equip_armor(id):
+	armor = get_node("/root/game").select_armor(id)
+	if armor['texture'] == null:
+		get_node("armor_sprite").set_texture(null)
+	else:
+		get_node("armor_sprite").set_texture(load(armor['texture']))
+
 func die():
 	dead = true
 	x = -FAR_AWAY
@@ -102,3 +111,7 @@ func _ready():
 		var conv = {}
 		conv.parse_json(s)
 		conversations = conv
+		f.close()
+	
+	# Equip initial armor
+	equip_armor(armor_id)
