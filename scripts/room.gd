@@ -9,7 +9,10 @@ const TILE_TYPES = \
 {
 	-1: "impossible",
 	 0: "impossible", # Nothing can pass
-	 1: "walkable" # Anything can pass
+	 1: "walkable", # Anything can pass
+	 2: "solid",
+	 3: "walkable",
+	 4: "water"
 }
 # Other tile types
 # solid, water, lava

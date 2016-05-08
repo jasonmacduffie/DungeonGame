@@ -32,7 +32,7 @@ func _ready():
 	
 	# Remove this in the future to make more rooms possible
 	load_game("default")
-	room = current_scene
+	room = current_scene.get_node("room")
 	room.add_child(player)
 	player.x = 1
 	player.y = 1
