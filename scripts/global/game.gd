@@ -23,6 +23,23 @@ func select_weapon(id):
 			return i
 	return false
 
+func new_game():
+	call_deferred("_deferred_new_game")
+
+func _deferred_new_game():
+	player = PLAYER_SCENE.instance()
+	current_scene.free()
+	var s = ResourceLoader.load("res://scenes/quizixville.xscn")
+	current_scene = s.instance()
+	get_tree().get_root().add_child(current_scene)
+	get_tree().set_current_scene( current_scene )
+	room = current_scene.get_node("room")
+	player.x = 8
+	player.y = 8
+	player.species = "nathulan"
+	room.add_child(player)
+	room.redraw(player)
+
 func load_game(name):
 	player = PLAYER_SCENE.instance()
 	var x = ConfigFile.new()
@@ -73,13 +90,3 @@ func _ready():
 	# Initialize global data
 	armors = read_json_file("res://data/armor.json")['armors']
 	weapons = read_json_file("res://data/weapon.json")['weapons']
-	
-	# Remove this in the future to make more rooms possible
-	load_game("default")
-	player.armor_id = "old_plate"
-	room = current_scene.get_node("room")
-	room.add_child(player)
-	player.x = 1
-	player.y = 1
-	room.redraw(player)
-
