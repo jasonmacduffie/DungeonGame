@@ -107,11 +107,20 @@ func equip_weapon(id):
 	else:
 		get_node("weapon_sprite").set_texture(load(weapon['texture']))
 
+func start_dead():
+	# Make the npc dead without checking the global variable
+	dead = true
+	x = -FAR_AWAY
+	y = -FAR_AWAY
+
 func die():
 	dead = true
 	x = -FAR_AWAY
 	y = -FAR_AWAY
 	get_node("/root/game").room.redraw(self)
+	
+	if id != "respawnable":
+		get_node("/root/game").npc_died(id)
 
 func damage(dmg):
 	hp_damage += dmg

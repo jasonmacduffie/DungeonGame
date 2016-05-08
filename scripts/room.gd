@@ -148,6 +148,9 @@ func _ready():
 			var position = i.get_pos()
 			i.x = int(round((position.x - 32) / TILE_SIZE))
 			i.y = int(round((position.y - 32) / TILE_SIZE))
+			# Check if the NPC is dead already
+			if i extends MOB_CLASS and i.id != "respawnable" and i.id in get_node("/root/game").dead_npcs:
+				i.start_dead()
 			redraw(i)
 	set_process_input(true)
 	set_process(true)

@@ -30,12 +30,16 @@ func select_weapon(id):
 			return i
 	return false
 
+func npc_died(id):
+	if not (id in dead_npcs): # Do not add repeats
+		dead_npcs.append(id)
+
 func new_game():
 	call_deferred("_deferred_new_game")
 
 func _deferred_new_game():
 	player = PLAYER_SCENE.instance()
-	player.id = 0 # Player always has the id 0
+	player.id = "player"
 	dead_npcs = []
 	current_scene.free()
 	var s = ResourceLoader.load("res://scenes/quizixville.xscn")
@@ -51,7 +55,7 @@ func _deferred_new_game():
 
 func load_game(name):
 	player = PLAYER_SCENE.instance()
-	player.id = 0
+	player.id = "player"
 	var x = ConfigFile.new()
 	x.load("user://saves/" + name + ".save.cfg")
 	player.stat_str = x.get_value("Player", "strength")
