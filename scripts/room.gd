@@ -7,12 +7,12 @@ const CONVERSATION_SCENE = preload("res://scenes/conversation.xscn")
 const TILE_SIZE = 64
 const TILE_TYPES = \
 {
-	-1: "impossible",
-	 0: "impossible", # Nothing can pass
+	-1: "impossible", # Nothing can pass
+	 0: "solid", # Only ghosts can pass
 	 1: "walkable", # Anything can pass
 	 2: "solid",
 	 3: "walkable",
-	 4: "water"
+	 4: "water" # Flying, aquatic can pass
 }
 # Other tile types
 # solid, water, lava
