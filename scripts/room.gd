@@ -38,6 +38,7 @@ func redraw(item):
 func open_conversation(mob):
 	var conv = CONVERSATION_SCENE.instance()
 	get_node("canvas").add_child(conv)
+	get_tree().set_pause(true)
 
 func check_tile(mob, direction):
 	var x = mob.x
