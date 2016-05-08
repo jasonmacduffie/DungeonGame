@@ -14,8 +14,7 @@ const TILE_TYPES = \
 	 3: "walkable",
 	 4: "water" # Flying, aquatic can pass
 }
-# Other tile types
-# solid, water, lava
+# Another type, lava, only flying and magmic can pass
 
 var player
 var direction_press = false
@@ -31,6 +30,13 @@ func _input(event):
 			direction_press = "up"
 		elif event.is_action("ui_down"):
 			direction_press = "down"
+		elif event.is_action("ui_playermenu"):
+			bring_player_menu()
+
+func bring_player_menu():
+	var pm = player.get_node("canvas").get_node("playermenu")
+	pm.show()
+	get_tree().set_pause(true)
 
 func remove_child_player():
 	# Used to easily remove the player when changing rooms

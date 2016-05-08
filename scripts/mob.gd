@@ -40,6 +40,8 @@ var armor
 export var weapon_id = "none"
 var weapon
 
+var inventory = []
+
 # negative is enemy
 # 0 to 50 is neutral
 # 50 to 100 is friendly
