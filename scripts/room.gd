@@ -119,6 +119,7 @@ func _process(delta):
 			var mob = walk_type[1]
 			if mob.disposition < 0:
 				player.attack(mob)
+				player.face(direction)
 				mobs_turn()
 			else:
 				open_conversation(mob)
@@ -131,8 +132,8 @@ func _ready():
 	for i in get_children():
 		if (i extends MOB_CLASS and i != player) or i extends TRANSITION_CLASS:
 			var position = i.get_pos()
-			i.x = int(round(position.x / TILE_SIZE))
-			i.y = int(round(position.y / TILE_SIZE))
+			i.x = int(round((position.x - 32) / TILE_SIZE))
+			i.y = int(round((position.y - 32) / TILE_SIZE))
 			redraw(i)
 	set_process_input(true)
 	set_process(true)
