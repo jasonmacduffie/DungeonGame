@@ -42,6 +42,10 @@ var conversations = {
 	]
 }
 
+# Allow loading external conversation trees
+export var external_conv = false
+export var conv_resource = ""
+
 
 func can_walk(tile_type):
 	return tile_type in walkable

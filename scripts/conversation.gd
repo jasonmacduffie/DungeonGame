@@ -20,10 +20,12 @@ func enter_option():
 	if (i + 1) == get_node("choices").get_button_count():
 		get_tree().set_pause(false)
 		queue_free()
-		
-	pass
+	else:
+		set_topic(current_topic['options'][i])
 
 func set_topic(d):
+	get_node("choices").clear()
+	current_topic = d
 	# Set initial to the text box
 	for i in d['options']:
 		# For each option, add a button
