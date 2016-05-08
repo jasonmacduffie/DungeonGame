@@ -1,8 +1,9 @@
 
 extends Node2D
 
+const CONVERSATION_SCENE = preload("res://scenes/conversation.xscn")
 const TILE_SIZE = 64
-const tile_types = \
+const TILE_TYPES = \
 {
 	-1: "impossible",
 	 0: "impossible", # Nothing can pass
@@ -30,7 +31,12 @@ func redraw(item):
 	# This method displays the item in the correct coordinate
 	var x = item.x
 	var y = item.y
-	item.set_pos(Vector2(x * TILE_SIZE, y * TILE_SIZE))
+	item.set_pos(Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE))
+
+func open_conversation(mob):
+	pass
+	#var conv = CONVERSATION_SCENE.instance()
+	#get_viewport().add_child(conv)
 
 func check_tile(mob, direction):
 	var x = mob.x
@@ -44,7 +50,7 @@ func check_tile(mob, direction):
 	else:
 		x -= 1
 	
-	var tile_result = mob.can_walk(tile_types[get_node("tiles").get_cell(x,y)])
+	var tile_result = mob.can_walk(TILE_TYPES[get_node("tiles").get_cell(x,y)])
 	var mob_result = false
 	
 	for i in get_children():
@@ -103,6 +109,8 @@ func _process(delta):
 			if mob.disposition < 0:
 				player.attack(mob)
 				mobs_turn()
+			else:
+				open_conversation(mob)
 		else:
 			pass
 
