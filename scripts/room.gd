@@ -120,7 +120,7 @@ func _ready():
 	player = get_node("/root/game").player
 	# Calculate mob location based on initial position
 	for i in get_children():
-		if i extends MOB_CLASS:
+		if i extends MOB_CLASS or i extends TRANSITION_CLASS:
 			var position = i.get_pos()
 			i.x = int(round(position.x / TILE_SIZE))
 			i.y = int(round(position.y / TILE_SIZE))
