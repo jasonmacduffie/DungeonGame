@@ -36,9 +36,8 @@ func redraw(item):
 	item.set_pos(Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE))
 
 func open_conversation(mob):
-	pass
-	#var conv = CONVERSATION_SCENE.instance()
-	#get_viewport().add_child(conv)
+	var conv = CONVERSATION_SCENE.instance()
+	get_node("canvas").add_child(conv)
 
 func check_tile(mob, direction):
 	var x = mob.x
