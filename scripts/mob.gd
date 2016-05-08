@@ -23,10 +23,25 @@ var dead = false
 export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
 
+export var name = "default"
+
 # negative is enemy
 # 0 to 50 is neutral
 # 50 to 100 is friendly
 export(int, -100, 100) var disposition = 50
+
+# conversation topics are in JSON-like format
+var conversations = {
+	"initial" : "Hello there, character.",
+	"options" : [
+		{
+			"description" : "Small Talk",
+			"initial" : "The weather is terrible.",
+			"options" : []
+		}
+	]
+}
+
 
 func can_walk(tile_type):
 	return tile_type in walkable
