@@ -1,6 +1,8 @@
 
 extends Node2D
 
+const MOB_CLASS = preload("res://scripts/mob.gd")
+const TRANSITION_CLASS = preload("res://scripts/transition.gd")
 const CONVERSATION_SCENE = preload("res://scenes/conversation.xscn")
 const TILE_SIZE = 64
 const TILE_TYPES = \
@@ -54,7 +56,7 @@ func check_tile(mob, direction):
 	var mob_result = false
 	
 	for i in get_children():
-		if i extends preload("res://scripts/mob.gd") and i.x == x and i.y == y:
+		if i extends MOB_CLASS and i.x == x and i.y == y:
 				mob_result = i
 				break
 	
@@ -68,7 +70,7 @@ func check_tile(mob, direction):
 
 func mobs_turn():
 	for i in get_children():
-		if i extends preload("res://scripts/mob.gd") and i != player:
+		if i extends MOB_CLASS and i != player:
 			if not i.dead:
 				mob_take_turn(i)
 
@@ -118,7 +120,7 @@ func _ready():
 	player = get_node("/root/game").player
 	# Calculate mob location based on initial position
 	for i in get_children():
-		if i extends preload("res://scripts/mob.gd"):
+		if i extends MOB_CLASS:
 			var position = i.get_pos()
 			i.x = int(round(position.x / TILE_SIZE))
 			i.y = int(round(position.y / TILE_SIZE))
