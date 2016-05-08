@@ -2,13 +2,20 @@
 extends Node
 
 const PLAYER_SCENE = preload("res://scenes/player.xscn")
+
+# For tracking the player/room
 var player
 var room
+
+# Current scene, including e.g. the main menu
 var current_scene
 
-# Other global variables
+# World variables
 var armors = []
 var weapons = []
+
+# Global game variables
+var dead_npcs = []
 
 # Functions for selecting from global variables
 func select_armor(id):
@@ -28,6 +35,8 @@ func new_game():
 
 func _deferred_new_game():
 	player = PLAYER_SCENE.instance()
+	player.id = 0 # Player always has the id 0
+	dead_npcs = []
 	current_scene.free()
 	var s = ResourceLoader.load("res://scenes/quizixville.xscn")
 	current_scene = s.instance()
@@ -42,6 +51,7 @@ func _deferred_new_game():
 
 func load_game(name):
 	player = PLAYER_SCENE.instance()
+	player.id = 0
 	var x = ConfigFile.new()
 	x.load("user://saves/" + name + ".save.cfg")
 	player.stat_str = x.get_value("Player", "strength")

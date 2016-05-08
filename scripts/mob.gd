@@ -6,6 +6,9 @@ const ROAM = 0
 const SEARCH = 1
 const FLEE = 2
 
+# a unique id, for keeping track of npc death
+export var id = "respawnable"
+
 # basic stats
 export(int, 0, 10) var stat_str = 4
 export(int, 0, 10) var stat_spd = 4
