@@ -1,17 +1,17 @@
 {
-    "initial" : "All hail the empire!",
+    "initial" : "All hail the Empire!",
     "options" : [
         {
-            "description" : "Empire?",
-            "initial" : "The empire is truly great.",
+            "description" : "Empire",
+            "initial" : "The Nathulan Empire, dear citizen. The Empire grants us protection through its incredible strength, and in exchange asks only for our obedience, submission, and competence. Is that not a great deal?",
             "options" : [
                 {
-                    "description" : "The empire sucks.",
-                    "initial" : "WHAT?! YOU TRAITOR.",
+                    "description" : "The empire sucks!",
+                    "initial" : "WHAT?! YOU TRAITOR. I WILL REPORT YOU!",
                     "options" : []
                 },
                 {
-                    "description" : "Something else...",
+                    "description" : "Let's change the subject.",
                     "result" : "root"
                 }
             ]
