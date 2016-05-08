@@ -24,6 +24,10 @@ export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
 
 export var name = ""
+export var race = "creature" # This is a string, to be flexible
+
+# A custom skin may be specified
+export var sprite_resource = ""
 
 # negative is enemy
 # 0 to 50 is neutral
@@ -75,9 +79,18 @@ func damage(dmg):
 func attack(mob):
 	mob.damage(attack_power)
 
+func load_sprite(loc):
+	get_node("sprite").set_texture(load(loc))
+
 func _ready():
 	max_hp = 8 * stat_str
 	attack_power = 1 * stat_str
+	# Load an external sprite if not null
+	if sprite_resource != "":
+		load_sprite(sprite_resource)
+	# You can also load a generic racial sprite
+	elif race in ["human", "roandan", "dokoran", "hermadon", "nathulan", "treddan"]:
+		load_sprite("res://images/" + race + ".png")
 	# Load an external conversation if specified
 	if external_conv:
 		var f = File.new()
