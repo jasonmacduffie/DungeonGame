@@ -22,8 +22,8 @@
 				<string> "movement" </string>
 				<string> "name" </string>
 				<string> "disposition" </string>
-				<string> "external_conversations" </string>
-				<string> "conversation_resource" </string>
+				<string> "external_conv" </string>
+				<string> "conv_resource" </string>
 				<string> "Node2D" </string>
 				<string> "sprite" </string>
 				<string> "texture" </string>

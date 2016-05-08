@@ -5,7 +5,7 @@ var conversation_tree = {
 	"initial" : "default",
 	"options" : []
 }
-var npc_name = "default"
+var npc_name = ""
 var current_topic
 var avatar_location = "res://images/anonymous_avatar.png"
 

@@ -23,7 +23,7 @@ var dead = false
 export(int, "roam", "search", "flee") var movement = 0
 var walkable = ["walkable"]
 
-export var name = "default"
+export var name = ""
 
 # negative is enemy
 # 0 to 50 is neutral
