@@ -5,6 +5,7 @@ var conversation_tree = {
 	"initial" : "default",
 	"options" : []
 }
+var npc
 var npc_name = ""
 var current_topic
 var avatar_location = "res://images/anonymous_avatar.png"
@@ -28,9 +29,14 @@ func set_topic(d):
 	get_node("output").clear()
 	get_node("choices").clear()
 	current_topic = d
-	# Check for special results
+	# Check for special events
 	if d.has("result"):
-		if d['result'] == 'root':
+		var result = d['result']
+		if result.has('please'):
+			npc.disposition += result['please']
+	# Check for special branches
+	if d.has("branch"):
+		if d['branch'] == 'root':
 			set_topic(conversation_tree)
 	else:
 		# Set initial to the text box

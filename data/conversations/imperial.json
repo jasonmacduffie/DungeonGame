@@ -8,11 +8,14 @@
                 {
                     "description" : "The empire sucks!",
                     "initial" : "WHAT?! YOU TRAITOR. I WILL REPORT YOU!",
-                    "options" : []
+                    "options" : [],
+                    "result" : {
+                        "please" : -50
+                    }
                 },
                 {
                     "description" : "Let's change the subject.",
-                    "result" : "root"
+                    "branch" : "root"
                 }
             ]
         }

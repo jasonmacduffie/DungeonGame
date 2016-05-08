@@ -54,6 +54,7 @@ func opposite_dir(direction):
 
 func open_conversation(mob):
 	var conv = CONVERSATION_SCENE.instance()
+	conv.npc = mob
 	conv.npc_name = mob.name
 	conv.conversation_tree = mob.conversations
 	get_node("canvas").add_child(conv)
