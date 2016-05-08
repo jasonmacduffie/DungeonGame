@@ -58,6 +58,21 @@ var conversations = {
 export var external_conv = false
 export var conv_resource = ""
 
+func face(direction):
+	facing = direction
+	var sprites = [get_node("sprite"), get_node("armor_sprite"), get_node("weapon_sprite")]
+	if direction == "down":
+		for i in sprites:
+			i.set_frame(0)
+	elif direction == "right":
+		for i in sprites:
+			i.set_frame(1)
+	elif direction == "up":
+		for i in sprites:
+			i.set_frame(2)
+	else:
+		for i in sprites:
+			i.set_frame(3)
 
 func can_walk(tile_type):
 	return tile_type in walkable
@@ -72,6 +87,8 @@ func move(direction):
 		x += 1
 	else:
 		x -= 1
+	
+	face(direction)
 
 func equip_armor(id):
 	armor = get_node("/root/game").select_armor(id)
