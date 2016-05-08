@@ -29,6 +29,9 @@ export var species = "creature" # This is a string, to be flexible
 # A custom skin may be specified
 export var sprite_resource = ""
 
+# Armor is just one piece to make things simpler
+var armor_id = "none"
+
 # negative is enemy
 # 0 to 50 is neutral
 # 50 to 100 is friendly

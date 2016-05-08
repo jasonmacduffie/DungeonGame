@@ -1,0 +1,12 @@
+[
+    {
+        "id": "none",
+        "name": "Unarmored",
+        "protection":0
+    },
+    {
+        "id": "old_plate",
+        "name": "Old Plate",
+        "protection" 5
+    }
+]
