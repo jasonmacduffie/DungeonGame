@@ -10,9 +10,6 @@ var current_topic
 var avatar_location = "res://images/anonymous_avatar.png"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
 	current_topic = conversation_tree
 	get_node("name").set_text(npc_name)
 	get_node("avatar").set_texture(load(avatar_location))
