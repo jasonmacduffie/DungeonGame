@@ -35,7 +35,7 @@ func _input(event):
 
 func bring_player_menu():
 	var pm = player.get_node("canvas").get_node("playermenu")
-	pm.show()
+	pm.open_menu()
 	get_tree().set_pause(true)
 
 func remove_child_player():
