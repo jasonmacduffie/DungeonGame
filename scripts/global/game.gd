@@ -7,11 +7,18 @@ var room
 var current_scene
 
 # Other global variables
-var armors = {}
+var armors = []
+var weapons = []
 
 # Functions for selecting from global variables
 func select_armor(id):
 	for i in armors:
+		if i['id'] == id:
+			return i
+	return false
+
+func select_weapon(id):
+	for i in weapons:
 		if i['id'] == id:
 			return i
 	return false
@@ -51,17 +58,21 @@ func _deferred_goto_scene(path):
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene( current_scene )
 
+func read_json_file(loc):
+	var f = File.new()
+	f.open(loc, File.READ)
+	var d = {}
+	d.parse_json(f.get_as_text())
+	f.close()
+	return d
+
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
 	
 	# Initialize global data
-	var f = File.new()
-	f.open("res://data/armor.json", File.READ)
-	var d = {}
-	d.parse_json(f.get_as_text())
-	armors = d['armors']
-	f.close()
+	armors = read_json_file("res://data/armor.json")['armors']
+	weapons = read_json_file("res://data/weapon.json")['weapons']
 	
 	# Remove this in the future to make more rooms possible
 	load_game("default")

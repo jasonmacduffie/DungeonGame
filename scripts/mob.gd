@@ -34,6 +34,9 @@ export var sprite_resource = ""
 export var armor_id = "none"
 var armor
 
+export var weapon_id = "none"
+var weapon
+
 # negative is enemy
 # 0 to 50 is neutral
 # 50 to 100 is friendly
@@ -77,6 +80,13 @@ func equip_armor(id):
 	else:
 		get_node("armor_sprite").set_texture(load(armor['texture']))
 
+func equip_weapon(id):
+	weapon = get_node("/root/game").select_weapon(id)
+	if weapon['texture'] == null:
+		get_node("weapon_sprite").set_texture(null)
+	else:
+		get_node("weapon_sprite").set_texture(load(weapon['texture']))
+
 func die():
 	dead = true
 	x = -FAR_AWAY
@@ -113,5 +123,6 @@ func _ready():
 		conversations = conv
 		f.close()
 	
-	# Equip initial armor
+	# Equip initial armor and weapon
+	equip_weapon(weapon_id)
 	equip_armor(armor_id)
