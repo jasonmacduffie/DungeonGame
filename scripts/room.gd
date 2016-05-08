@@ -42,6 +42,16 @@ func redraw(item):
 	var y = item.y
 	item.set_pos(Vector2((x + 0.5) * TILE_SIZE, (y + 0.5) * TILE_SIZE))
 
+func opposite_dir(direction):
+	if direction == "up":
+		return "down"
+	elif direction == "down":
+		return "up"
+	elif direction == "left":
+		return "right"
+	else:
+		return "left"
+
 func open_conversation(mob):
 	var conv = CONVERSATION_SCENE.instance()
 	conv.npc_name = mob.name
@@ -118,10 +128,13 @@ func _process(delta):
 		elif walk_type[0] == "mob":
 			var mob = walk_type[1]
 			if mob.disposition < 0:
-				player.attack(mob)
 				player.face(direction)
+				mob.face(opposite_dir(direction))
+				player.attack(mob)
 				mobs_turn()
 			else:
+				player.face(direction)
+				mob.face(opposite_dir(direction))
 				open_conversation(mob)
 		else:
 			pass
