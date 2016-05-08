@@ -78,3 +78,11 @@ func attack(mob):
 func _ready():
 	max_hp = 8 * stat_str
 	attack_power = 1 * stat_str
+	# Load an external conversation if specified
+	if external_conv:
+		var f = File.new()
+		f.open(conv_resource, File.READ)
+		var s = f.get_as_text()
+		var conv = {}
+		conv.parse_json(s)
+		conversations = conv

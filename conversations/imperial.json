@@ -1,0 +1,20 @@
+{
+    "initial" : "All hail the empire!",
+    "options" : [
+        {
+            "description" : "Empire?",
+            "initial" : "The empire is truly great.",
+            "options" : [
+                {
+                    "description" : "The empire sucks.",
+                    "initial" : "WHAT?! YOU TRAITOR.",
+                    "options" : []
+                },
+                {
+                    "description" : "Something else...",
+                    "result" : "root"
+                }
+            ]
+        }
+    ]
+}
