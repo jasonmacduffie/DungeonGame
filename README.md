@@ -1,6 +1,6 @@
-Generic Dungeon Game
-====================
-This is a generic dungeon game.
+Danker RPG
+==========
+Danker is a 2D top-down turnbased role playing game.
 
 Copyright 2016 Jason K. MacDuffie
 
