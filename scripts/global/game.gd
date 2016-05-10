@@ -11,19 +11,15 @@ var room
 var current_scene
 
 # World variables
-var armors = {}
-var weapons = {}
+var items = {}
 var factions = {}
 
 # Global game variables
 var dead_npcs = []
 
 # Functions for selecting from global variables
-func select_armor(id):
-	return armors[id]
-
-func select_weapon(id):
-	return weapons[id]
+func select_item(id):
+	return items[id]
 
 func select_faction(id):
 	return factions[id]
@@ -101,6 +97,5 @@ func _ready():
 	current_scene = root.get_child( root.get_child_count() -1 )
 	
 	# Initialize global data
-	armors = read_json_file("res://data/armor.json")
-	weapons = read_json_file("res://data/weapon.json")
+	items = read_json_file("res://data/items.json")
 	factions = read_json_file("res://data/faction.json")

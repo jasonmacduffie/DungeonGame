@@ -77,8 +77,8 @@
 				<string> "default" </string>
 				<string> "creature" </string>
 				<string> "" </string>
-				<string> "none" </string>
-				<int> -50 </int>
+				<string> "noweapon" </string>
+				<int> 50 </int>
 				<bool> False </bool>
 				<int> 16 </int>
 				<int> 1 </int>

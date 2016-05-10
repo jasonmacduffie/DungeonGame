@@ -39,9 +39,9 @@ export var species = "creature" # This is a string, to be flexible
 export var sprite_resource = ""
 
 # Armor is just one piece to make things simpler
-export var armor_id = "none"
+export var armor_id = "noarmor"
 var armor
-export var weapon_id = "none"
+export var weapon_id = "noweapon"
 var weapon
 
 export(StringArray) var factions = []
@@ -138,14 +138,14 @@ func move(direction):
 	face(direction)
 
 func equip_armor(id):
-	armor = get_node("/root/game").select_armor(id)
+	armor = get_node("/root/game").select_item(id)
 	if armor['texture'] == null:
 		get_node("armor_sprite").set_texture(null)
 	else:
 		get_node("armor_sprite").set_texture(load(armor['texture']))
 
 func equip_weapon(id):
-	weapon = get_node("/root/game").select_weapon(id)
+	weapon = get_node("/root/game").select_item(id)
 	if weapon['texture'] == null:
 		get_node("weapon_sprite").set_texture(null)
 	else:
