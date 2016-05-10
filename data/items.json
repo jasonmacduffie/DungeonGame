@@ -1,0 +1,26 @@
+{
+	"noweapon": {
+		"id": "noweapon",
+		"name": "Fists",
+		"damage": 0,
+		"texture": null
+	},
+	"old_longsword": {
+		"id": "old_longsword",
+		"name": "Old Longsword",
+		"damage": 5,
+		"texture": "res://images/old_longsword.png"
+	},
+	"noarmor": {
+		"id": "noarmor",
+		"name": "Unarmored",
+		"protection": 0,
+		"texture": null
+	},
+	"old_plate" : {
+		"id": "old_plate",
+		"name": "Old Plate",
+		"protection": 5,
+		"texture": "res://images/old_plate.png"
+	}
+}
