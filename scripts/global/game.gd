@@ -11,24 +11,22 @@ var room
 var current_scene
 
 # World variables
-var armors = []
-var weapons = []
+var armors = {}
+var weapons = {}
+var factions = {}
 
 # Global game variables
 var dead_npcs = []
 
 # Functions for selecting from global variables
 func select_armor(id):
-	for i in armors:
-		if i['id'] == id:
-			return i
-	return false
+	return armors[id]
 
 func select_weapon(id):
-	for i in weapons:
-		if i['id'] == id:
-			return i
-	return false
+	return weapons[id]
+
+func select_faction(id):
+	return factions[id]
 
 func npc_died(id):
 	if not (id in dead_npcs): # Do not add repeats
@@ -40,6 +38,7 @@ func new_game():
 func _deferred_new_game():
 	player = PLAYER_SCENE.instance()
 	player.id = "player"
+	player.is_player = true
 	dead_npcs = []
 	current_scene.free()
 	var s = ResourceLoader.load("res://scenes/quizixville.xscn")
@@ -102,5 +101,6 @@ func _ready():
 	current_scene = root.get_child( root.get_child_count() -1 )
 	
 	# Initialize global data
-	armors = read_json_file("res://data/armor.json")['armors']
-	weapons = read_json_file("res://data/weapon.json")['weapons']
+	armors = read_json_file("res://data/armor.json")
+	weapons = read_json_file("res://data/weapon.json")
+	factions = read_json_file("res://data/faction.json")

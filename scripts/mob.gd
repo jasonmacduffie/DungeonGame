@@ -9,6 +9,9 @@ const FLEE = 2
 # a unique id, for keeping track of npc death
 export var id = "respawnable"
 
+# just describes whether the mob is the player
+var is_player = false
+
 # basic stats
 export(int, 0, 10) var stat_str = 4
 export(int, 0, 10) var stat_spd = 4
@@ -18,6 +21,8 @@ export(int, 0, 10) var stat_acc = 4
 # derived stats
 var max_hp
 var attack_power
+var attack_range = 1
+var vision_range = 5
 
 var hp_damage = 0
 var x = 0
@@ -36,9 +41,13 @@ export var sprite_resource = ""
 # Armor is just one piece to make things simpler
 export var armor_id = "none"
 var armor
-
 export var weapon_id = "none"
 var weapon
+
+export(StringArray) var factions = []
+var aggressive = false
+var friends = []
+var enemies = []
 
 var inventory = []
 
@@ -62,6 +71,39 @@ var conversations = {
 # Allow loading external conversation trees
 export var external_conv = false
 export var conv_resource = ""
+
+func mob_distance(mob):
+	# Get the orthogonal distance between self and mob
+	return abs(mob.x - x) + abs(mob.y - y)
+
+func in_attack_range(mob):
+	# Determine whether the target is in attack range
+	return mob_distance(mob) <= min(attack_range, vision_range)
+
+func in_vision_range(mob):
+	# Determine whether the target is in vision range,
+	# and the direction to face if so
+	return mob_distance(mob) <= vision_range
+
+func direction_towards(mob):
+	# Determine the correct direction to face this mob
+	var rightness = mob.x - x
+	var downness = mob.y - y
+	if abs(rightness) > abs(downness):
+		if rightness < 0:
+			return "left"
+		return "right"
+	if downness < 0:
+		return "up"
+	return "down"
+
+func mob_take_turn(mob):
+	var mobloc = Vector2(mob.x, mob.y)
+	# Check whether the mob can attack
+	for i in get_mobs():
+		if mob != i and mob_distance(mob, i) <= min(mob.vision_range, mob.attack_range) and mob.is_enemy(i):
+			mob.attack(i)
+			return
 
 func face(direction):
 	facing = direction
@@ -135,6 +177,64 @@ func attack(mob):
 func load_sprite(loc):
 	get_node("sprite").set_texture(load(loc))
 
+func is_enemy(mob):
+	# Determine whether hostile to this character
+	if mob.is_player:
+		# High disposition overloads faction relations
+		if disposition > 90:
+			return false
+		# Same for low disposition
+		elif disposition < 0:
+			return true
+		# Otherwise treat like any other mob
+		else:
+			if aggressive:
+				for i in mob.factions:
+					if i in friends:
+						return false
+				return true
+			for i in mob.factions:
+				if i in enemies:
+					return true
+			return false
+	# Aggressive mobs invert the test
+	if mob.aggressive:
+		for i in factions:
+			if i in mob.friends:
+				return false
+		return true
+	if aggressive:
+		for i in mob.factions:
+			if i in friends:
+				return false
+		return true
+	# Check whether the target is in this mob's enemies
+	for i in mob.factions:
+		if i in enemies:
+			return true
+	# Check whether this mob is in the target mob's enemies
+	for i in factions:
+		if i in mob.enemies:
+			return true
+	return false
+
+func reload_factions():
+	# Load friends, enemies, and aggression
+	friends = []
+	enemies = []
+	for i in factions:
+		var f = get_node("/root/game").select_faction(i)
+		if f.has('aggressive') and f['aggressive']:
+			aggressive = true
+		if f.has('friends'):
+			for j in f['friends']:
+				if not j in friends:
+					friends.append(j)
+		if f.has('enemies'):
+			for j in f['enemies']:
+				if not j in enemies:
+					enemies.append(j)
+
 func _ready():
 	max_hp = 8 * stat_str
 	attack_power = 1 * stat_str
@@ -153,6 +253,8 @@ func _ready():
 		conv.parse_json(s)
 		conversations = conv
 		f.close()
+	
+	reload_factions()
 	
 	# Equip initial armor and weapon
 	equip_weapon(weapon_id)

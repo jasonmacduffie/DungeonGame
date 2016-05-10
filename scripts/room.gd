@@ -33,6 +33,13 @@ func _input(event):
 		elif event.is_action("ui_playermenu"):
 			bring_player_menu()
 
+func get_mobs():
+	var result = []
+	for i in get_children():
+		if i extends MOB_CLASS:
+			result.append(i)
+	return result
+
 func bring_player_menu():
 	var pm = player.get_node("canvas").get_node("playermenu")
 	pm.open_menu()
@@ -81,10 +88,10 @@ func check_tile(mob, direction):
 	var tile_result = mob.can_walk(TILE_TYPES[get_node("tiles").get_cell(x,y)])
 	var mob_result = false
 	
-	for i in get_children():
-		if i extends MOB_CLASS and i.x == x and i.y == y:
-				mob_result = i
-				break
+	for i in get_mobs():
+		if i.x == x and i.y == y:
+			mob_result = i
+			break
 	
 	if tile_result:
 		if mob_result:
@@ -95,33 +102,46 @@ func check_tile(mob, direction):
 		return ["bad", false]
 
 func mobs_turn():
-	for i in get_children():
-		if i extends MOB_CLASS and i != player:
-			if not i.dead:
-				mob_take_turn(i)
+	for i in get_mobs():
+		if not (i.is_player or i.dead):
+			mob_take_turn(i)
 
 func mob_take_turn(mob):
 	var mobloc = Vector2(mob.x, mob.y)
-	var playerloc = Vector2(player.x, player.y)
-	if mob.disposition < 0 and (mobloc - playerloc).length() < 1.4:
-		mob.attack(player)
-	elif mob.movement == mob.ROAM:
-		var i = randi() % 4
-		var direction
-		if i == 0:
-			direction = "up"
-		elif i == 1:
-			direction = "down"
-		elif i == 2:
-			direction = "left"
-		else:
-			direction = "right"
-		var walk_type = check_tile(mob, direction)
-		if walk_type[0] == "normal":
-			mob.move(direction)
-			redraw(mob)
+	# Check whether the mob can attack
+	for i in get_mobs():
+		if mob != i and mob.in_attack_range(i) and mob.is_enemy(i):
+			mob.attack(i)
+			return
+	# Otherwise, move
+	if mob.movement == mob.ROAM:
+		wander_mob(mob)
+	elif mob.movement == mob.SEARCH:
+		for i in get_mobs():
+			if mob != i and mob.in_vision_range(i) and mob.is_enemy(i):
+				var dir = mob.direction_towards(i)
+				move_mob(mob, dir)
+				return
+		wander_mob(mob)
+
+func wander_mob(mob):
+	var i = randi() % 4
+	var direction
+	if i == 0:
+		direction = "up"
+	elif i == 1:
+		direction = "down"
+	elif i == 2:
+		direction = "left"
 	else:
-		pass
+		direction = "right"
+	move_mob(mob, direction)
+
+func move_mob(mob, dir):
+	var walk_type = check_tile(mob, dir)
+	if walk_type[0] == "normal":
+		mob.move(dir)
+		redraw(mob)
 
 func _process(delta):
 	if direction_press:
@@ -129,8 +149,7 @@ func _process(delta):
 		direction_press = false
 		var walk_type = check_tile(player, direction)
 		if walk_type[0] == "normal":
-			player.move(direction)
-			redraw(player)
+			move_mob(player, direction)
 			mobs_turn()
 		elif walk_type[0] == "mob":
 			var mob = walk_type[1]

@@ -1,0 +1,33 @@
+{
+	"passive": {
+		"id": "passive",
+		"name": "Passive"
+	},
+	"aggressive": {
+		"id": "aggressive",
+		"name": "Aggressive",
+		"friends": ["aggressive"],
+		"aggressive": true
+	},
+	"hyperaggressive": {
+		"id": "hyperaggressive",
+		"name": "Hyper Aggressive",
+		"aggressive": true
+	},
+	"imperial": {
+		"id": "imperial",
+		"name": "Imperial",
+		"enemies": ["antiimperial"]
+	},
+	"antiimperial": {
+		"id": "antiimperial",
+		"name": "Anti-Imperial",
+		"enemies": ["imperial"]
+	},
+	"bandit": {
+		"id": "bandit",
+		"name": "Bandit",
+		"friends": ["bandit"],
+		"aggressive": true
+	}
+}

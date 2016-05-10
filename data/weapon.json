@@ -1,16 +1,14 @@
 {
-    "weapons": [
-        {
-            "id": "none",
-            "name": "Fists",
-            "damage":0,
-            "texture": null
-        },
-        {
-            "id": "old_longsword",
-            "name": "Old Longsword",
-            "damage": 5,
-            "texture": "res://images/old_longsword.png"
-        }
-    ]
+	"none": {
+		"id": "none",
+		"name": "Fists",
+		"damage":0,
+		"texture": null
+	},
+	"old_longsword": {
+		"id": "old_longsword",
+		"name": "Old Longsword",
+		"damage": 5,
+		"texture": "res://images/old_longsword.png"
+	}
 }
