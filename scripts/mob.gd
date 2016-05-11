@@ -172,6 +172,9 @@ func die():
 	
 	if id != "respawnable":
 		get_node("/root/game").npc_died(id)
+	
+	if not is_player:
+		queue_free()
 
 func damage(dmg):
 	# Modify dmg by armor value
