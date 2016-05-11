@@ -3,6 +3,7 @@ extends Node2D
 
 const MOB_CLASS = preload("res://scripts/mob.gd")
 const TRANSITION_CLASS = preload("res://scripts/transition.gd")
+const CONTAINER_CLASS = preload("res://scripts/container.gd")
 const CONVERSATION_SCENE = preload("res://scenes/conversation.xscn")
 const TILE_SIZE = 64
 const TILE_TYPES = \
@@ -195,7 +196,7 @@ func _ready():
 	player = get_node("/root/game").player
 	# Calculate mob location based on initial position
 	for i in get_children():
-		if (i extends MOB_CLASS and i != player) or i extends TRANSITION_CLASS:
+		if (i extends MOB_CLASS and i != player) or i extends TRANSITION_CLASS or i extends CONTAINER_CLASS:
 			var position = i.get_pos()
 			i.x = int(round((position.x - 32) / TILE_SIZE))
 			i.y = int(round((position.y - 32) / TILE_SIZE))

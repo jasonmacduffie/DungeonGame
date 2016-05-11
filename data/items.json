@@ -31,7 +31,7 @@
 	"old_plate" : {
 		"id": "old_plate",
 		"name": "Old Plate",
-		"protection": 5,
+		"protection": 20,
 		"texture": "res://images/old_plate.png",
 		"category": "armor"
 	}

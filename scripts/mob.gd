@@ -71,8 +71,7 @@ var conversations = {
 }
 
 # Allow loading external conversation trees
-export var external_conv = false
-export var conv_resource = ""
+export var conversation_source = ""
 
 func mob_distance(mob):
 	# Get the orthogonal distance between self and mob
@@ -178,7 +177,7 @@ func die():
 
 func damage(dmg):
 	# Modify dmg by armor value
-	var actual_damage = dmg * (1 - armor['protection']/100.0)
+	var actual_damage = int(floor(dmg * (1 - armor['protection']/100.0)))
 	hp_damage += actual_damage
 	if hp_damage > max_hp:
 		die()
@@ -249,7 +248,10 @@ func reload_factions():
 
 func _ready():
 	max_hp = 8 * stat_str
-	attack_power = 1 * stat_str
+	attack_power = 2 * stat_str
+	# Avoid issues with factions being null
+	if factions == null:
+		factions = []
 	# Load an external sprite if not null
 	if sprite_resource != "":
 		load_sprite(sprite_resource)
@@ -257,13 +259,11 @@ func _ready():
 	elif species in ["human", "roandan", "dokoran", "hermadon", "nathulan", "treddan"]:
 		load_sprite("res://images/" + species + ".png")
 	# Load an external conversation if specified
-	if external_conv:
+	if conversation_source != "":
 		var f = File.new()
-		f.open(conv_resource, File.READ)
+		f.open("res://data/conversations/" + conversation_source + ".json", File.READ)
 		var s = f.get_as_text()
-		var conv = {}
-		conv.parse_json(s)
-		conversations = conv
+		conversations.parse_json(s)
 		f.close()
 	
 	reload_factions()

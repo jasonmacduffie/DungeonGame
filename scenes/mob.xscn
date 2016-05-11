@@ -51,7 +51,7 @@
 				<string> "default" </string>
 				<string> "creature" </string>
 				<string> "" </string>
-				<string> "noweapon" </string>
+				<string> "noarmor" </string>
 				<int> 50 </int>
 				<bool> False </bool>
 				<resource  external="1">  </resource>
