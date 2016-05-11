@@ -44,6 +44,7 @@ func _deferred_new_game():
 	room = current_scene.get_node("room")
 	player.x = 8
 	player.y = 8
+	player.armor_id = "old_plate"
 	player.species = "nathulan"
 	room.add_child(player)
 	room.redraw(player)

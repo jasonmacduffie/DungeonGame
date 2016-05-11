@@ -41,8 +41,10 @@ export var sprite_resource = ""
 # Armor is just one piece to make things simpler
 export var armor_id = "noarmor"
 var armor
-export var weapon_id = "noweapon"
-var weapon
+export var melee_weapon_id = "nomeleeweapon"
+var melee_weapon
+export var ranged_weapon_id = "norangedweapon"
+var ranged_weapon
 
 export(StringArray) var factions = []
 var aggressive = false
@@ -87,15 +89,20 @@ func in_vision_range(mob):
 
 func direction_towards(mob):
 	# Determine the correct direction to face this mob
-	var rightness = mob.x - x
-	var downness = mob.y - y
-	if abs(rightness) > abs(downness):
-		if rightness < 0:
-			return "left"
-		return "right"
-	if downness < 0:
-		return "up"
-	return "down"
+	var rightness
+	var downness
+	if mob.x - x < 0:
+		rightness = "left"
+	else:
+		rightness = "right"
+	if mob.y - y < 0:
+		downness = "up"
+	else:
+		downness = "down"
+	if abs(mob.x - x) < abs(mob.y - y):
+		return [downness, rightness]
+	else:
+		return [rightness, downness]
 
 func mob_take_turn(mob):
 	var mobloc = Vector2(mob.x, mob.y)
@@ -145,11 +152,11 @@ func equip_armor(id):
 		get_node("armor_sprite").set_texture(load(armor['texture']))
 
 func equip_weapon(id):
-	weapon = get_node("/root/game").select_item(id)
-	if weapon['texture'] == null:
+	melee_weapon = get_node("/root/game").select_item(id)
+	if melee_weapon['texture'] == null:
 		get_node("weapon_sprite").set_texture(null)
 	else:
-		get_node("weapon_sprite").set_texture(load(weapon['texture']))
+		get_node("weapon_sprite").set_texture(load(melee_weapon['texture']))
 
 func start_dead():
 	# Make the npc dead without checking the global variable
@@ -167,12 +174,14 @@ func die():
 		get_node("/root/game").npc_died(id)
 
 func damage(dmg):
-	hp_damage += dmg
+	# Modify dmg by armor value
+	var actual_damage = dmg * (1 - armor['protection']/100.0)
+	hp_damage += actual_damage
 	if hp_damage > max_hp:
 		die()
 
-func attack(mob):
-	mob.damage(attack_power)
+func melee_attack(mob):
+	mob.damage(attack_power + melee_weapon['damage'])
 
 func load_sprite(loc):
 	get_node("sprite").set_texture(load(loc))
@@ -257,5 +266,5 @@ func _ready():
 	reload_factions()
 	
 	# Equip initial armor and weapon
-	equip_weapon(weapon_id)
+	equip_weapon(melee_weapon_id)
 	equip_armor(armor_id)

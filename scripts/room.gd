@@ -16,6 +16,23 @@ const TILE_TYPES = \
 }
 # Another type, lava, only flying and magmic can pass
 
+# Speed to turn probabilities, in percentile
+# These approximately fit a square root curve
+const SPEED_PROBABILITY = \
+[
+	0,
+	0,
+	13,
+	19,
+	24,
+	28,
+	31,
+	34,
+	37,
+	40,
+	42
+]
+
 var player
 var direction_press = false
 
@@ -105,13 +122,16 @@ func mobs_turn():
 	for i in get_mobs():
 		if not (i.is_player or i.dead):
 			mob_take_turn(i)
+			# Based on speed, the mob may take a turn again
+			while (randi() % 100 < SPEED_PROBABILITY[i.stat_spd]):
+				mob_take_turn(i)
 
 func mob_take_turn(mob):
 	var mobloc = Vector2(mob.x, mob.y)
 	# Check whether the mob can attack
 	for i in get_mobs():
 		if mob != i and mob.in_attack_range(i) and mob.is_enemy(i):
-			mob.attack(i)
+			mob.melee_attack(i)
 			return
 	# Otherwise, move
 	if mob.movement == mob.ROAM:
@@ -119,8 +139,12 @@ func mob_take_turn(mob):
 	elif mob.movement == mob.SEARCH:
 		for i in get_mobs():
 			if mob != i and mob.in_vision_range(i) and mob.is_enemy(i):
-				var dir = mob.direction_towards(i)
-				move_mob(mob, dir)
+				var dirs = mob.direction_towards(i)
+				var walk_type = check_tile(mob, dirs[0])
+				if walk_type[0] == "normal":
+					move_mob(mob, dirs[0])
+				else:
+					move_mob(mob, dirs[1])
 				return
 		wander_mob(mob)
 
@@ -150,14 +174,16 @@ func _process(delta):
 		var walk_type = check_tile(player, direction)
 		if walk_type[0] == "normal":
 			move_mob(player, direction)
-			mobs_turn()
+			if (randi() % 100 >= SPEED_PROBABILITY[player.stat_spd]):
+				mobs_turn()
 		elif walk_type[0] == "mob":
 			var mob = walk_type[1]
 			if mob.disposition < 0:
 				player.face(direction)
 				mob.face(opposite_dir(direction))
-				player.attack(mob)
-				mobs_turn()
+				player.melee_attack(mob)
+				if (randi() % 100 >= SPEED_PROBABILITY[player.stat_spd]):
+					mobs_turn()
 			else:
 				player.face(direction)
 				mob.face(opposite_dir(direction))
