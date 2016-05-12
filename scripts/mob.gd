@@ -76,7 +76,6 @@ export var conversation_source = ""
 
 func effective_speed():
 	var s = int(stat_spd - weight / stat_str / 7500.0)
-	print(weight / stat_str / 7500.0)
 	return s
 
 func mob_distance(mob):
