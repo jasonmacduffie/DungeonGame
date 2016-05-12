@@ -187,7 +187,10 @@ func _process(delta):
 		var direction = direction_press
 		direction_press = false
 		var walk_type = check_tile(player, direction)
-		if walk_type[0] == "normal":
+		assert(walk_type[0] in ["bad", "normal", "mob", "container"])
+		if walk_type[0] == "bad":
+			player.face(direction)
+		elif walk_type[0] == "normal":
 			move_mob(player, direction)
 			if (randi() % 100 >= SPEED_PROBABILITY[player.stat_spd]):
 				mobs_turn()
@@ -203,8 +206,10 @@ func _process(delta):
 				player.face(direction)
 				mob.face(opposite_dir(direction))
 				open_conversation(mob)
+		elif walk_type[0] == "container":
+			player.face(direction)
 		else:
-			pass
+			print("walk_type not understood")
 
 func _ready():
 	player = get_node("/root/game").player
