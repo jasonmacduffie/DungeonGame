@@ -58,6 +58,13 @@ func get_mobs():
 			result.append(i)
 	return result
 
+func get_containers():
+	var result = []
+	for i in get_children():
+		if i extends CONTAINER_CLASS:
+			result.append(i)
+	return result
+
 func bring_player_menu():
 	var pm = player.get_node("canvas").get_node("playermenu")
 	pm.open_menu()
@@ -105,19 +112,26 @@ func check_tile(mob, direction):
 	
 	var tile_result = mob.can_walk(TILE_TYPES[get_node("tiles").get_cell(x,y)])
 	var mob_result = false
+	var container_result = false
+	
+	if not tile_result:
+		return ["bad", false]
 	
 	for i in get_mobs():
 		if i.x == x and i.y == y:
 			mob_result = i
 			break
+	if mob_result:
+		return ["mob", mob_result]
 	
-	if tile_result:
-		if mob_result:
-			return ["mob", mob_result] # For attacking
-		else:
-			return ["normal", false]
-	else:
-		return ["bad", false]
+	for i in get_containers():
+		if i.x == x and i.y == y:
+			container_result = i
+			break
+	if container_result:
+		return ["container", container_result]
+	
+	return ["normal", false]
 
 func mobs_turn():
 	for i in get_mobs():
