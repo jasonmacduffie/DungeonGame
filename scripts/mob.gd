@@ -148,22 +148,22 @@ func move(direction):
 	
 	face(direction)
 
-func equip_armor(id):
-	armor = get_node("/root/game").select_item(id)
-	if armor['texture'] == null:
-		get_node("armor_sprite").set_texture(null)
-	else:
-		get_node("armor_sprite").set_texture(load(armor['texture']))
-
-func equip_melee_weapon(id):
-	melee_weapon = get_node("/root/game").select_item(id)
-	if melee_weapon['texture'] == null:
-		get_node("weapon_sprite").set_texture(null)
-	else:
-		get_node("weapon_sprite").set_texture(load(melee_weapon['texture']))
-
-func equip_ranged_weapon(id):
-	ranged_weapon = get_node("/root/game").select_item(id)
+func equip_item(id):
+	var i = get_node("/root/game").select_item(id)
+	if i['category'] == "armor":
+		armor = i
+		if i['texture'] == null:
+			get_node("armor_sprite").set_texture(null)
+		else:
+			get_node("armor_sprite").set_texture(load(i['texture']))
+	elif i['category'] == "meleeweapon":
+		melee_weapon = i
+		if i['texture'] == null:
+			get_node("weapon_sprite").set_texture(null)
+		else:
+			get_node("weapon_sprite").set_texture(load(i['texture']))
+	elif i['category'] == "rangedweapon":
+		ranged_weapon = i
 
 func start_dead():
 	# Make the npc dead without checking the global variable
@@ -284,9 +284,9 @@ func _ready():
 		f.close()
 	
 	# Equip initial armor and weapon
-	equip_melee_weapon(melee_weapon_id)
-	equip_ranged_weapon(ranged_weapon_id)
-	equip_armor(armor_id)
+	equip_item(melee_weapon_id)
+	equip_item(ranged_weapon_id)
+	equip_item(armor_id)
 	
 	reload_factions()
 	reload_weight()
