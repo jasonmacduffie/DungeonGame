@@ -148,6 +148,18 @@ func move(direction):
 	
 	face(direction)
 
+func inventory_add(id):
+	inventory.append(id)
+	weight += get_node("/root/game").select_item(id)['weight']
+
+func inventory_remove(id):
+	weight -= get_node("/root/game").select_item(id)['weight']
+	inventory.erase(id)
+
+func inventory_equip(id):
+	inventory.erase(id)
+	equip_item(id)
+
 func equip_item(id):
 	var i = get_node("/root/game").select_item(id)
 	if i['category'] == "armor":
