@@ -9,11 +9,12 @@ const TILE_SIZE = 64
 const TILE_TYPES = \
 {
 	-1: "impossible", # Nothing can pass
-	 0: "solid", # Only ghosts can pass
-	 1: "walkable", # Anything can pass
-	 2: "solid",
-	 3: "walkable",
-	 4: "water" # Flying, aquatic can pass
+	 0: "impossible",
+	 1: "solid", # Only ghosts can pass
+	 2: "walkable", # Anything can pass
+	 3: "solid",
+	 4: "walkable",
+	 5: "water" # Flying, aquatic can pass
 }
 # Another type, lava, only flying and magmic can pass
 
