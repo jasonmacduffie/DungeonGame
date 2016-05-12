@@ -4,14 +4,16 @@
 		"name": "Fists",
 		"damage": 0,
 		"texture": null,
-		"category": "meleeweapon"
+		"category": "meleeweapon",
+                "weight": 0
 	},
 	"old_longsword": {
 		"id": "old_longsword",
 		"name": "Old Longsword",
 		"damage": 5,
 		"texture": "res://images/old_longsword.png",
-		"category": "meleeweapon"
+		"category": "meleeweapon",
+                "weight": 5000
 	},
 	"norangedweapon": {
 		"id": "norangedweapon",
@@ -19,20 +21,23 @@
 		"damage": 0,
 		"texture": null,
 		"range": -1,
-		"category": "rangedweapon"
+		"category": "rangedweapon",
+                "weight": 0
 	},
 	"noarmor": {
 		"id": "noarmor",
 		"name": "Unarmored",
 		"protection": 0,
 		"texture": null,
-		"category": "armor"
+		"category": "armor",
+                "weight": 0
 	},
 	"old_plate" : {
 		"id": "old_plate",
 		"name": "Old Plate",
 		"protection": 20,
 		"texture": "res://images/old_plate.png",
-		"category": "armor"
+		"category": "armor",
+                "weight": 30000
 	}
 }

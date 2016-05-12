@@ -138,7 +138,7 @@ func mobs_turn():
 		if not (i.is_player or i.dead):
 			mob_take_turn(i)
 			# Based on speed, the mob may take a turn again
-			while (randi() % 100 < SPEED_PROBABILITY[i.stat_spd]):
+			while (randi() % 100 < SPEED_PROBABILITY[i.effective_speed()]):
 				mob_take_turn(i)
 
 func mob_take_turn(mob):
@@ -192,7 +192,7 @@ func _process(delta):
 			player.face(direction)
 		elif walk_type[0] == "normal":
 			move_mob(player, direction)
-			if (randi() % 100 >= SPEED_PROBABILITY[player.stat_spd]):
+			if (randi() % 100 >= SPEED_PROBABILITY[player.effective_speed()]):
 				mobs_turn()
 		elif walk_type[0] == "mob":
 			var mob = walk_type[1]
@@ -200,7 +200,7 @@ func _process(delta):
 				player.face(direction)
 				mob.face(opposite_dir(direction))
 				player.melee_attack(mob)
-				if (randi() % 100 >= SPEED_PROBABILITY[player.stat_spd]):
+				if (randi() % 100 >= SPEED_PROBABILITY[player.effective_speed()]):
 					mobs_turn()
 			else:
 				player.face(direction)

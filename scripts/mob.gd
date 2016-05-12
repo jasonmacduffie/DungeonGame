@@ -52,6 +52,7 @@ var friends = []
 var enemies = []
 
 var inventory = []
+var weight = 0 # Should approximate grams
 
 # negative is enemy
 # 0 to 50 is neutral
@@ -72,6 +73,11 @@ var conversations = {
 
 # Allow loading external conversation trees
 export var conversation_source = ""
+
+func effective_speed():
+	var s = int(stat_spd - weight / stat_str / 7500.0)
+	print(weight / stat_str / 7500.0)
+	return s
 
 func mob_distance(mob):
 	# Get the orthogonal distance between self and mob
@@ -150,12 +156,15 @@ func equip_armor(id):
 	else:
 		get_node("armor_sprite").set_texture(load(armor['texture']))
 
-func equip_weapon(id):
+func equip_melee_weapon(id):
 	melee_weapon = get_node("/root/game").select_item(id)
 	if melee_weapon['texture'] == null:
 		get_node("weapon_sprite").set_texture(null)
 	else:
 		get_node("weapon_sprite").set_texture(load(melee_weapon['texture']))
+
+func equip_ranged_weapon(id):
+	ranged_weapon = get_node("/root/game").select_item(id)
 
 func start_dead():
 	# Make the npc dead without checking the global variable
@@ -177,7 +186,7 @@ func die():
 
 func damage(dmg):
 	# Modify dmg by armor value
-	var actual_damage = int(floor(dmg * (1 - armor['protection']/100.0)))
+	var actual_damage = int(dmg * (1 - armor['protection']/100.0))
 	hp_damage += actual_damage
 	if hp_damage > max_hp:
 		die()
@@ -246,6 +255,15 @@ func reload_factions():
 				if not j in enemies:
 					enemies.append(j)
 
+func reload_weight():
+	weight = 0
+	for i in inventory:
+		weight += i['weight']
+	
+	weight += melee_weapon['weight']
+	weight += ranged_weapon['weight']
+	weight += armor['weight']
+
 func _ready():
 	max_hp = 8 * stat_str
 	attack_power = 2 * stat_str
@@ -266,8 +284,10 @@ func _ready():
 		conversations.parse_json(s)
 		f.close()
 	
-	reload_factions()
-	
 	# Equip initial armor and weapon
-	equip_weapon(melee_weapon_id)
+	equip_melee_weapon(melee_weapon_id)
+	equip_ranged_weapon(ranged_weapon_id)
 	equip_armor(armor_id)
+	
+	reload_factions()
+	reload_weight()
