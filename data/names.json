@@ -25,7 +25,8 @@
                 "Laz",
                 "Skiz",
                 "Murd",
-                "Dursh"
+                "Dursh",
+                "Grak"
             ],
             [
                 "moz",
@@ -51,7 +52,8 @@
                 "bort",
                 "keg",
                 "roke",
-                "larg"
+                "larg",
+                "lok"
             ]
         ],
         [
@@ -79,7 +81,8 @@
                 "Skull",
                 "Bleak",
                 "Fist",
-                "Murk"
+                "Murk",
+                "Doom"
             ],
             [
                 "killer",
@@ -105,7 +108,8 @@
                 "shooter",
                 "skinner",
                 "punk",
-                "lurker"
+                "lurker",
+                "star"
             ]
         ]
     ]
