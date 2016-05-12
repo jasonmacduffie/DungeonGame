@@ -24,7 +24,8 @@
                 "Blik",
                 "Laz",
                 "Skiz",
-                "Murd"
+                "Murd",
+                "Dursh"
             ],
             [
                 "moz",
@@ -49,7 +50,8 @@
                 "wast",
                 "bort",
                 "keg",
-                "roke"
+                "roke",
+                "larg"
             ]
         ],
         [
@@ -76,7 +78,8 @@
                 "Vast",
                 "Skull",
                 "Bleak",
-                "Fist"
+                "Fist",
+                "Murk"
             ],
             [
                 "killer",
@@ -101,7 +104,8 @@
                 "metal",
                 "shooter",
                 "skinner",
-                "punk"
+                "punk",
+                "lurker"
             ]
         ]
     ]
