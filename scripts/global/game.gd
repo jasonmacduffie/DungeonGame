@@ -37,7 +37,7 @@ func _deferred_new_game():
 	player.is_player = true
 	dead_npcs = []
 	current_scene.free()
-	var s = ResourceLoader.load("res://scenes/quizixville.xscn")
+	var s = ResourceLoader.load("res://scenes/rooms/quizixville.xscn")
 	current_scene = s.instance()
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene( current_scene )
