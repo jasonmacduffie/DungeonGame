@@ -9,6 +9,7 @@ High Priority
 - Implement quests
 - Implement containers
 - Implement corpses on death
+- Create sprites for Dokorans and Treddans
 
 Low Priority
 ------------
