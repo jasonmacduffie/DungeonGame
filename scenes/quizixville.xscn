@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="6" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://images/tiles.png" type="Texture" index="1"></ext_resource>
-	<ext_resource path="res://scenes/mob.xscn" type="PackedScene" index="2"></ext_resource>
-	<ext_resource path="res://scenes/container.xscn" type="PackedScene" index="3"></ext_resource>
 	<ext_resource path="res://scenes/room.xscn" type="PackedScene" index="0"></ext_resource>
+	<ext_resource path="res://scenes/container.xscn" type="PackedScene" index="3"></ext_resource>
+	<ext_resource path="res://scenes/mob.xscn" type="PackedScene" index="2"></ext_resource>
 	<resource type="TileSet" path="local://1">
 		<string name="1/name"> "" </string>
 		<resource name="1/texture" external="1">  </resource>
@@ -1216,12 +1216,12 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="162"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2147483647, 3, 1, 0, 0, 1, 0, 20, 4, -1, 16, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 2, 12, 8, 13, 8, 14, 9, 15, 10, 16, 11, 17, 11, 18, 11, 19, 12, 1, 13, 0, 1, 0, 2147483647, 22, 14, 8, 23, 15, 24, 16, 25, 17, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 0, 1, 0, 2147483647, 31, 14, 11, 23, 23, 32, 24, 24, 16, 33, 11, 25, 25, 26, 26, 34, 27, 27, 28, 28, 20, 29, 29, 30, 30, 0, 1, 0, 2147483647, 35, 31, 1, 23, 32, 0, 1, 0, 2147483647, 36, 14, 8, 23, 33, 24, 16, 25, 34, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 0, 1, 0, 2147483647, 37, 14, 8, 23, 35, 24, 16, 25, 36, 26, 18, 27, 19, 28, 20, 29, 29, 30, 30, 0 </int_array>
+			<int_array  len="162"> 				-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2147483647, 3, 1, 0, 0, 1, 0, 20, 4, -1, 16, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 2, 12, 8, 13, 8, 14, 9, 15, 10, 16, 11, 17, 11, 18, 11, 19, 12, 1, 13, 0, 1, 0, 2147483647, 22, 14, 8, 23, 15, 24, 16, 25, 17, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 0, 1, 0, 2147483647, 31, 14, 11, 23, 23, 32, 24, 24, 16, 33, 11, 25, 25, 26, 26, 34, 27, 27, 28, 28, 20, 29, 29, 30, 30, 0, 1, 0, 2147483647, 35, 31, 1, 23, 32, 0, 1, 0, 2147483647, 36, 14, 8, 23, 33, 24, 16, 25, 34, 26, 35, 27, 19, 28, 20, 29, 21, 30, 22, 0, 1, 0, 2147483647, 37, 14, 8, 23, 36, 24, 16, 25, 37, 26, 26, 27, 19, 28, 20, 29, 29, 30, 30, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="37" shared="false">
+			<array  len="38" shared="false">
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<resource  external="0">  </resource>
 				<int> 0 </int>
@@ -1262,6 +1262,7 @@
 				<vector2> 2260.72, 1561.95 </vector2>
 				<vector2> 3180.33, 1614.23 </vector2>
 				<string> "Gogle Bask" </string>
+				<string> "roandan" </string>
 				<vector2> 2848.44, 1565.99 </vector2>
 				<string> "Rupith Quid" </string>
 			</array>
