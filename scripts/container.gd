@@ -11,4 +11,8 @@ func _ready():
 	if initial_items != null:
 		items += initial_items
 
+func remove_item(id):
+	items.erase(id)
 
+func add_item(id):
+	items.append(id)
