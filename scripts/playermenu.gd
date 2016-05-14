@@ -1,7 +1,8 @@
 
 extends Panel
 
-onready var inventory_list = get_node("tabs").get_node("Inventory").get_node("scroll_area").get_node("itemlist")
+onready var invpanel = get_node("tabs/Inventory")
+onready var invlist = get_node("tabs/Inventory/invlist")
 
 func _input(event):
 	var valid = event.is_pressed() && !event.is_echo()
@@ -17,9 +18,18 @@ func leave_menu():
 
 func open_menu():
 	for i in get_node("/root/game").player.inventory:
-		inventory_list.add_item(i['name'])
+		add_invlist_item(i)
 	set_process_input(true)
 	show()
+
+func add_invlist_item(id):
+	var item = get_node("/root/game").select_item(id)
+	var y = invlist.get_button_count()
+	invlist.add_button(item['name'])
+	var l = Label.new()
+	invlist.add_child(l)
+	l.set_pos(Vector2(450 , 29 * y + 4))
+	l.set_text(str(item['weight'] / 1000.0) + " kg")
 
 func _ready():
 	pass
