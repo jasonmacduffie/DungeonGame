@@ -47,6 +47,7 @@ func _deferred_new_game():
 	player.species = "human"
 	room.add_child(player)
 	room.redraw(player)
+	player.inventory_add("old_longsword")
 
 func load_game(name):
 	player = PLAYER_SCENE.instance()

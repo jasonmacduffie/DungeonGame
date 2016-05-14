@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="2" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
+<resource_file type="PackedScene" subresource_count="3" version="2.0" version_name="Godot Engine v2.0.stable.custom_build">
 	<ext_resource path="res://scripts/playermenu.gd" type="Script" index="0"></ext_resource>
+	<ext_resource path="res://scripts/invlist.gd" type="Script" index="1"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "conn_count" </string>
@@ -11,7 +12,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="39">
+			<string_array  len="38">
 				<string> "playermenu" </string>
 				<string> "process/pause_mode" </string>
 				<string> "anchor/right" </string>
@@ -39,28 +40,27 @@
 				<string> "max_lines_visible" </string>
 				<string> "Label" </string>
 				<string> "Inventory" </string>
-				<string> "visibility/visible" </string>
 				<string> "name" </string>
 				<string> "weight" </string>
-				<string> "total" </string>
-				<string> "total_weight" </string>
+				<string> "ScrollContainer" </string>
+				<string> "scroll/horizontal" </string>
+				<string> "scroll/vertical" </string>
 				<string> "invlist" </string>
-				<string> "button/count" </string>
-				<string> "button/min_button_size" </string>
-				<string> "button/align" </string>
-				<string> "VButtonArray" </string>
+				<string> "alignment" </string>
+				<string> "VBoxContainer" </string>
 				<string> "Magic" </string>
+				<string> "visibility/visible" </string>
 				<string> "Missions" </string>
 			</string_array>
 			<string> "node_count" </string>
-			<int> 12 </int>
+			<int> 11 </int>
 			<string> "node_paths" </string>
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="340"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 1, 4, 2, 5, 3, 6, 0, 7, 0, 8, 4, 9, 5, 0, 0, 0, 18, 11, -1, 10, 12, 6, 13, 7, 14, 8, 15, 9, 4, 2, 5, 3, 6, 0, 7, 0, 16, 1, 17, 3, 0, 1, 0, 10, 19, -1, 10, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 2, 0, 25, 20, -1, 11, 12, 6, 13, 12, 14, 13, 15, 14, 4, 3, 5, 3, 6, 0, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1, 0, 10, 26, -1, 11, 27, 2, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 4, 0, 25, 28, -1, 11, 12, 19, 13, 20, 14, 21, 15, 22, 4, 3, 5, 3, 6, 0, 21, 23, 22, 16, 23, 17, 24, 18, 0, 4, 0, 25, 29, -1, 11, 12, 24, 13, 25, 14, 26, 15, 27, 4, 3, 5, 3, 6, 0, 21, 28, 22, 16, 23, 17, 24, 18, 0, 4, 0, 25, 30, -1, 11, 12, 29, 13, 30, 14, 31, 15, 32, 4, 3, 5, 3, 6, 0, 21, 33, 22, 16, 23, 17, 24, 18, 0, 4, 0, 25, 31, -1, 11, 12, 34, 13, 35, 14, 36, 15, 37, 4, 3, 5, 3, 6, 0, 21, 38, 22, 16, 23, 17, 24, 18, 0, 4, 0, 36, 32, -1, 11, 12, 11, 13, 14, 14, 39, 15, 40, 4, 2, 5, 3, 6, 0, 7, 0, 33, 17, 34, 41, 35, 17, 0, 1, 0, 10, 37, -1, 11, 27, 2, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 1, 0, 10, 38, -1, 11, 27, 2, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0 </int_array>
+			<int_array  len="301"> 				-1, -1, 10, 0, -1, 9, 1, 0, 2, 1, 3, 1, 4, 2, 5, 3, 6, 0, 7, 0, 8, 4, 9, 5, 0, 0, 0, 18, 11, -1, 10, 12, 6, 13, 7, 14, 8, 15, 9, 4, 2, 5, 3, 6, 0, 7, 0, 16, 1, 17, 3, 0, 1, 0, 10, 19, -1, 10, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 2, 0, 25, 20, -1, 11, 12, 6, 13, 12, 14, 13, 15, 14, 4, 3, 5, 3, 6, 0, 21, 15, 22, 16, 23, 17, 24, 18, 0, 1, 0, 10, 26, -1, 10, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 4, 0, 25, 27, -1, 11, 12, 19, 13, 20, 14, 21, 15, 22, 4, 3, 5, 3, 6, 0, 21, 23, 22, 16, 23, 17, 24, 18, 0, 4, 0, 25, 28, -1, 11, 12, 24, 13, 25, 14, 26, 15, 27, 4, 3, 5, 3, 6, 0, 21, 28, 22, 16, 23, 17, 24, 18, 0, 4, 0, 29, 29, -1, 12, 2, 1, 3, 1, 12, 6, 13, 29, 14, 30, 15, 11, 4, 2, 5, 3, 6, 0, 7, 0, 30, 3, 31, 3, 0, 7, 0, 34, 32, -1, 6, 4, 2, 5, 2, 6, 0, 7, 0, 33, 17, 8, 31, 0, 1, 0, 10, 35, -1, 11, 36, 2, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0, 1, 0, 10, 37, -1, 11, 36, 2, 2, 1, 3, 1, 12, 10, 13, 11, 14, 10, 15, 10, 4, 2, 5, 3, 6, 0, 7, 0, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="42" shared="false">
+			<array  len="32" shared="false">
 				<int> 2 </int>
 				<int> 1 </int>
 				<bool> False </bool>
@@ -68,7 +68,7 @@
 				<resource  external="0">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
@@ -95,19 +95,9 @@
 				<real> 567 </real>
 				<real> 36 </real>
 				<string> "Weight (kg)" </string>
-				<real> 43 </real>
-				<real> 439 </real>
-				<real> 83 </real>
-				<real> 452 </real>
-				<string> "Total" </string>
-				<real> 495 </real>
-				<real> 434 </real>
-				<real> 535 </real>
-				<real> 447 </real>
-				<string> "3.0" </string>
-				<real> 131 </real>
-				<real> 136 </real>
-				<real> -1 </real>
+				<real> 47 </real>
+				<real> 41 </real>
+				<resource  external="1">  </resource>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
