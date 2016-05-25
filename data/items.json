@@ -1,4 +1,11 @@
 {
+	"agixtrum": {
+		"id": "agixtrum",
+		"name": "AGIXTRUM (TM)",
+		"category": "consumable",
+		"weight": 10,
+		"description": "Dipyrene Methamphetanol, marketed as AGIXTRUM. Boosts SPD for 10 turns."
+	},
 	"nomeleeweapon": {
 		"id": "nomeleeweapon",
 		"name": "Fists",
