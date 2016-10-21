@@ -4,7 +4,7 @@ extends Node2D
 const MOB_CLASS = preload("res://scripts/mob.gd")
 const TRANSITION_CLASS = preload("res://scripts/transition.gd")
 const CONTAINER_CLASS = preload("res://scripts/container.gd")
-const CONVERSATION_SCENE = preload("res://scenes/conversation.xscn")
+const CONVERSATION_SCENE = preload("res://scenes/conversation.tscn")
 const TILE_SIZE = 64
 const TILE_TYPES = \
 {
