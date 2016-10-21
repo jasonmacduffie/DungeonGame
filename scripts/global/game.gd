@@ -1,7 +1,7 @@
 
 extends Node
 
-const PLAYER_SCENE = preload("res://scenes/player.xscn")
+const PLAYER_SCENE = preload("res://scenes/player.tscn")
 
 # For tracking the player/room
 var player
@@ -37,7 +37,7 @@ func _deferred_new_game():
 	player.is_player = true
 	dead_npcs = []
 	current_scene.free()
-	var s = ResourceLoader.load("res://scenes/rooms/quizixville.xscn")
+	var s = ResourceLoader.load("res://scenes/rooms/quizixville.tscn")
 	current_scene = s.instance()
 	get_tree().get_root().add_child(current_scene)
 	get_tree().set_current_scene( current_scene )

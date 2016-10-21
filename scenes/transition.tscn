@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/transition.gd" type="Script" id=1]
+[ext_resource path="res://images/stairs.png" type="Texture" id=2]
+
+[node name="transition" type="Node2D"]
+
+script/script = ExtResource( 1 )
+next = ""
+next_x = 0
+next_y = 0
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+

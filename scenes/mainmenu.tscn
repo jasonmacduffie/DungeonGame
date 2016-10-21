@@ -1,0 +1,137 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/mainmenu.gd" type="Script" id=1]
+
+[node name="mainmenu" type="Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script", "_edit_lock_":true }
+
+[node name="Label" type="Label" parent="."]
+
+anchor/right = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 35.0
+margin/top = 35.0
+margin/right = 35.0
+margin/bottom = 135.0
+text = "Danker RPG"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="button_new" type="Button" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 360.0
+margin/right = 320.0
+margin/bottom = 310.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "New"
+flat = false
+
+[node name="button_load" type="Button" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 290.0
+margin/right = 320.0
+margin/bottom = 240.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Load"
+flat = false
+
+[node name="button_options" type="Button" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 220.0
+margin/right = 320.0
+margin/bottom = 170.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Options"
+flat = false
+
+[node name="button_credits" type="Button" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 150.0
+margin/right = 320.0
+margin/bottom = 100.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Credits"
+flat = false
+
+[node name="button_exit" type="Button" parent="."]
+
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 80.0
+margin/right = 320.0
+margin/bottom = 30.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Exit"
+flat = false
+
+[connection signal="pressed" from="button_new" to="." method="_on_button_new_pressed"]
+
+[connection signal="pressed" from="button_exit" to="." method="_on_button_exit_pressed"]
+
+

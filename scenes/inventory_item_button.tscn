@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/inventory_item_button.gd" type="Script" id=1]
+
+[node name="inventory_item_button" type="PanelContainer"]
+
+rect/min_size = Vector2( 300, 70 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 784.0
+margin/bottom = 70.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="hbox" type="HBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 777.0
+margin/bottom = 63.0
+alignment = 0
+
+[node name="name" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 254.0
+margin/bottom = 56.0
+text = "Iron Dagger"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="efficacy" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 258.0
+margin/top = 0.0
+margin/right = 512.0
+margin/bottom = 56.0
+text = "Nodata"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="weight" type="Label" parent="hbox"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 516.0
+margin/top = 0.0
+margin/right = 770.0
+margin/bottom = 56.0
+text = "4"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="select" type="Button" parent="."]
+
+visibility/self_opacity = 0.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 7.0
+margin/top = 7.0
+margin/right = 777.0
+margin/bottom = 63.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+

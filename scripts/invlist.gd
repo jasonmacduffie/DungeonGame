@@ -1,7 +1,7 @@
 
 extends VBoxContainer
 
-const INVBUTTON = preload("res://scenes/inventory_item_button.xscn")
+const INVBUTTON = preload("res://scenes/inventory_item_button.tscn")
 
 func _ready():
 	pass

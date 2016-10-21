@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/mob.gd" type="Script" id=1]
+[ext_resource path="res://images/human.png" type="Texture" id=2]
+
+[node name="mob" type="Node2D"]
+
+script/script = ExtResource( 1 )
+id = "respawnable"
+stat_str = 4
+stat_spd = 4
+stat_int = 4
+stat_acc = 4
+movement = 0
+name = "default"
+species = "creature"
+sprite_resource = ""
+armor_id = "noarmor"
+melee_weapon_id = "nomeleeweapon"
+ranged_weapon_id = "norangedweapon"
+factions = null
+disposition = 50
+conversation_source = ""
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+hframes = 16
+
+[node name="armor_sprite" type="Sprite" parent="."]
+
+hframes = 16
+
+[node name="weapon_sprite" type="Sprite" parent="."]
+
+hframes = 16
+
+
