@@ -1,0 +1,146 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/new_character.gd" type="Script" id=1]
+[ext_resource path="res://scenes/mob.tscn" type="PackedScene" id=2]
+
+[node name="new_character" type="Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script", "_edit_lock_":true }
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+text = "Create a New Character"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="button_confirm" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 317.0
+margin/top = 508.0
+margin/right = 545.0
+margin/bottom = 561.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Confirm"
+flat = false
+
+[node name="sample" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 420, 95 )
+
+[node name="label_race" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 340.0
+margin/top = 200.0
+margin/right = 370.0
+margin/bottom = 214.0
+text = "Race"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_strength" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 340.0
+margin/top = 300.0
+margin/right = 393.0
+margin/bottom = 314.0
+text = "Strength"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_speed" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 340.0
+margin/top = 340.0
+margin/right = 379.0
+margin/bottom = 354.0
+text = "Speed"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_intelligence" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 340.0
+margin/top = 380.0
+margin/right = 416.0
+margin/bottom = 394.0
+text = "Intelligence"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_accuracy" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 340.0
+margin/top = 420.0
+margin/right = 397.0
+margin/bottom = 434.0
+text = "Accuracy"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label_points_remaining" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 465.0
+margin/top = 246.0
+margin/right = 481.0
+margin/bottom = 260.0
+text = "16"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
