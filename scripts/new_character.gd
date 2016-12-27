@@ -1,13 +1,13 @@
 extends Panel
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var option_race = get_node("option_race")
 
 # Character has 16 pts to distribute
-# choose race as well
+
+func add_races():
+	var races = ["Human", "Roandan", "Dokoran", "Hermadon", "Nathulan", "Treddan"]
+	for i in races:
+		option_race.add_item(i)
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	add_races()
